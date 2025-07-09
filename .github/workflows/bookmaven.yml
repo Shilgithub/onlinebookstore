@@ -40,7 +40,8 @@ jobs:
         run: trivy fs --format table -o fs-report.json .
 
       - name: Install Gitleaks
-        run:  curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
+        run:  |
+              curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
               chmod +x gitleaks
               sudo mv gitleaks /usr/local/bin/gitleaks
 
