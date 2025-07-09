@@ -42,10 +42,10 @@ jobs:
       - name: Install Gitleaks
         run:  curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
               chmod +x gitleaks
-              sudo mv gitleaks /usr/local/bin/
+              sudo mv gitleaks /usr/local/bin/gitleaks
 
       - name: Gitleaks Code Scan
-        run: gitleaks detect --source . --report-format json --report-path=gitleaks-report.json
+        run:  gitleaks detect --source . --report-format json --report-path=gitleaks-report.json
 
   test:
     runs-on: self-hosted
