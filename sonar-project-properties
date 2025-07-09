@@ -1,0 +1,5 @@
+sonar.projectKey=sonar
+sonar.projectName=sonar
+sonar.java.binaries=.
+sonar.host.url=http://35.154.74.127:9000/
+sonar.login=${env.SONAR_TOKEN}
