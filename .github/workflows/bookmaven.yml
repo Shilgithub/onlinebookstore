@@ -44,8 +44,8 @@ jobs:
               chmod +x gitleaks
               sudo mv gitleaks /usr/local/bin/gitleaks
 
-      - name: Gitleaks Code Scan
-        run:  gitleaks detect --source . --report-format json --report-path=gitleaks-report.json
+      - name: Run Gitleaks Scan
+        run:  gitleaks detect -s . -r gitleaks-report.json -f json
 
   test:
     runs-on: self-hosted
