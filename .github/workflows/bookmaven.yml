@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo apt-get install -y wget apt-transport-https gnupg lsb-release
           wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-          echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/trivy.list
+          echo "deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
           sudo apt-get update -y
           sudo apt-get install -y trivy
 
@@ -40,13 +40,13 @@ jobs:
         run: trivy fs --format table -o fs-report.json .
 
       - name: Install Gitleaks
-        run:  |
-              curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
-              chmod +x gitleaks
-              sudo mv gitleaks /usr/local/bin/gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
+          chmod +x gitleaks
+          sudo mv gitleaks /usr/local/bin/gitleaks
 
       - name: Run Gitleaks Scan
-        run:  gitleaks detect -s . -r gitleaks-report.json -f json
+        run: gitleaks detect -s . -r gitleaks-report.json -f json
 
   test:
     runs-on: self-hosted
