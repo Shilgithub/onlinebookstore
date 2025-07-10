@@ -1,2 +1,15 @@
-FROM tomcat:9.0
-COPY target/onlinebookstore.war /usr/local/tomcat/webapps/
+#FROM tomcat:9.0
+#COPY target/onlinebookstore.war /usr/local/tomcat/webapps/
+
+# Use OpenJDK base image
+FROM openjdk:17-jdk-slim
+
+# Set working directory inside container
+WORKDIR /app
+
+# Copy the downloaded jar file to the container
+COPY app/*.jar app.jar
+
+# Run the jar file
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
