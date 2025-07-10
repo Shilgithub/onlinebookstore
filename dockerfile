@@ -8,8 +8,8 @@ FROM openjdk:openjdk-17-jdk
 WORKDIR /app
 
 # Copy the downloaded jar file to the container
-COPY app/*.jar app.jar
+COPY app/*.jar app.war
 
 # Run the jar file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-war", "app.war"]
 
