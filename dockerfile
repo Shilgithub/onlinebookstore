@@ -2,7 +2,7 @@
 #COPY target/onlinebookstore.war /usr/local/tomcat/webapps/
 
 # Use OpenJDK base image
-FROM openjdk:17-jdk-slim
+FROM openjdk:openjdk-17-jdk
 
 # Set working directory inside container
 WORKDIR /app
