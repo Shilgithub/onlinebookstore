@@ -1,5 +1,5 @@
 
-name:Ecommerce Java CI with Maven
+name: Ecommerce Java CI with Maven
 
 on:
   push:
