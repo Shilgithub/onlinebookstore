@@ -152,11 +152,10 @@ jobs:
         uses: azure/setup-kubectl@v3
         with:
           version: latest
+          
+      - name: Configure kubeconfig using AWS CLI
+        run: aws eks update-kubeconfig --region ap-south-1 --name gitactions-1
 
-      - name: Configure kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.EKS_KUBECONFIG }}" | base64 -d > $HOME/.kube/config
 
       - name: Validate K8s Cluster Connection
         run: |
